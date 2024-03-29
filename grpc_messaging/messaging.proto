@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package messaging;
+
+service MessagingService {
+    rpc SendMessage(MessageRequest) returns (MessageResponse);
+    rpc GetMessagesForUser(UserRequest) returns (MessageList);
+}
+
+message MessageRequest {
+    string sender = 1;
+    string recipient = 2;
+    string text = 3;
+}
+
+message MessageResponse {
+    string status = 1;
+}
+
+message UserRequest {
+    string user = 1;
+}
+
+message Message {
+    string sender = 1;
+    string text = 2;
+}
+
+message MessageList {
+    repeated Message messages = 1;
+}
